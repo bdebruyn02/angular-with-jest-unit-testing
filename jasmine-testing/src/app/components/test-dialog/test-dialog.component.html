@@ -1,1 +1,19 @@
-<p>test-dialog works!</p>
+@if(isLoading) {
+    <mat-progress-bar mode="query"></mat-progress-bar>
+}
+<h2 mat-dialog-title>Test Dialog</h2>
+<mat-dialog-content class="mat-typography">
+   
+    <mat-form-field style="width: 100%;">
+        <mat-label>Select Equipment</mat-label>
+        <mat-select>
+          @for (item of list; track item) {
+            <mat-option [value]="item">{{item | titlecase}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true">OK</button>
+</mat-dialog-actions>
